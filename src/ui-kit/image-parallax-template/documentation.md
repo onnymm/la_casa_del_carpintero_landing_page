@@ -237,19 +237,19 @@ useEffect(
 >   - Se guarda en la variable `scroll` el valor en pixeles del desplazamiento vertical del usuario en el documento.
 >   - Se calcula la posición en tiempo real del elemento `img` dentro del elemento `div` contenedor con la siguiente fórmula:
 >   
->       Tomando en cuenta que la posición vertical inicial de la imagen ya se calculó en el efecto anterior, se vuelve a utilizar esta misma fórmula para calcular la posición en tiempo real una vez que el usuario comienza a desplazarse verticalmente dentro del documento. A este valor que será negativo si el componente se encuentra por debajo del campo de visión de la ventana del navegador se le suma la multiplicación del valor de desplazamiento vertical del usuario por la velocidad de desplazamiento del elemento `img`, así que, cuando el componente entra al campo de visión de la ventana desde abajo significa que el usuario se ha desplazado el equivalente al valor de desplazamiento $Y$ mas el valor de la altura de la ventana del navegador que será igual al valor de la posición $Y$ del componente.
->   
->       $$ \text{Desplazamiento vertical} + \text{Altura de ventana de navegación} = \text{Posición Y del componente} $$
->       $$ scrollY - vh = selfYPosition $$
->   
->       Por ejemplo si la altura de la ventana del navegador es de 600 px y la posición $Y$ del componente es de 1,500 px éste comenzará a aparecer en la ventana de visualización del navegador cuando el usuario se haya desplazado 1500 px - 600 px, es decir, 900 px.
->   
->       $$ 1500px - 600px = 900px $$
->   
->       Así que cuando el componente entre totalmente al campo de visualización de la ventana del navegador mientras el usuario se desplaza hacia abajo el valor `top` del elemento `img` será de $ -\frac{1}{3} $ como se desea para que la parte inferior del elemento `img` ya se encuentre cubriendo la totalidad del elemento `div` contenedor.
->   
->       $$ \text{Cuando $ scrollY+vh = selfYPosition $: } top = -\frac{1}{3}selfHeight $$
->   
->       Finalmente cuando el usuario se desplaza lo suficientemente hacia abajo del documento para que el valor de desplazamiento vertical sea igual a la posición $Y$ del componente, es decir, cuando el componente ya está por comenzar a ocultarse por la parte superior de la ventana del navegador el valor `top` ya será igual a `0` y comenzará a tomar valores positivos mientras el elemento se oculta cada vez más por la parte superior del navegador.
->   
->       $$ \text{Cuando $ scrollY = selfYPosition $: } top = 0 $$
+>   >   Tomando en cuenta que la posición vertical inicial de la imagen ya se calculó en el efecto anterior, se vuelve a utilizar esta misma fórmula para calcular la posición en tiempo real una vez que el usuario comienza a desplazarse verticalmente dentro del documento. A este valor que será negativo si el componente se encuentra por debajo del campo de visión de la ventana del navegador se le suma la multiplicación del valor de desplazamiento vertical del usuario por la velocidad de desplazamiento del elemento `img`, así que, cuando el componente entra al campo de visión de la ventana desde abajo significa que el usuario se ha desplazado el equivalente al valor de desplazamiento $Y$ mas el valor de la altura de la ventana del navegador que será igual al valor de la posición $Y$ del componente.
+>   >   
+>   >   $$ \text{Desplazamiento vertical} + \text{Altura de ventana de navegación} = \text{Posición Y del componente} $$
+>   >   $$ scrollY - vh = selfYPosition $$
+>   >   
+>   >   Por ejemplo si la altura de la ventana del navegador es de 600 px y la posición $Y$ del componente es de 1,500 px éste comenzará a aparecer en la ventana de visualización del navegador cuando el usuario se haya desplazado 1500 px - 600 px, es decir, 900 px.
+>   >   
+>   >   $$ 1500px - 600px = 900px $$
+>   >   
+>   >   Así que cuando el componente entre totalmente al campo de visualización de la ventana del navegador mientras el usuario se desplaza hacia abajo el valor `top` del elemento `img` será de $ -\frac{1}{3} $ como se desea para que la parte inferior del elemento `img` ya se encuentre cubriendo la totalidad del elemento `div` contenedor.
+>   >   
+>   >   $$ \text{Cuando $ scrollY+vh = selfYPosition $: } top = -\frac{1}{3}selfHeight $$
+>   >   
+>   >   Finalmente cuando el usuario se desplaza lo suficientemente hacia abajo del documento para que el valor de desplazamiento vertical sea igual a la posición $Y$ del componente, es decir, cuando el componente ya está por comenzar a ocultarse por la parte superior de la ventana del navegador el valor `top` ya será igual a `0` y comenzará a tomar valores positivos mientras el elemento se oculta cada vez más por la parte superior del navegador.
+>   >   
+>   >   $$ \text{Cuando $ scrollY = selfYPosition $: } top = 0 $$
