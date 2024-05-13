@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* RESETS */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+section,
+div,
+p,
+button {
+    margin: 0;
+    padding: 0;
+}
+
+img,
+button {
+    user-select: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+:root {
+    /* COLORS */
+    --color-light-red: 353, 100%, 50%;
+    --color-light-red-focused: 353, 100%, 56.5%;
+    --color-white: 0, 0%, 100%;
+    --color-black: 0, 0%, 0%;
+    --color-light-gray: 0, 0%, 90%;
+    --color-dark-gray: 0, 0%, 50%;
+    --color-transparent: 0, 0%, 0%;
+
+    /* FONT SIZES */
+    --ff-large: 4rem;
+    --ff-medium: 2rem;
+}
+
+::selection {
+    background-color: hsl( var(--color-light-red), 0.75);
+    color: hsl( var(--color-white), 1)
+}
+
+body {
+    /* background-image: url("banner.jpg"); */
+}
+
+body * {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: var(--ff-large)
+}
+
+h2 {
+    font-size: var(--ff-medium);
+    font-weight: 400;
+    color: hsl( var(--color-dark-gray), 1);
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+/* modular-styles */
+.glass-container {
+    background-color: hsl( var(--color-white), 0.75);
+    backdrop-filter: blur(6px);
+}
+
+main {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}

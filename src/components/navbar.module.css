@@ -1,0 +1,19 @@
+.navbar {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    width: 100vw;
+}
+
+.logo {
+    margin: 0.5rem;
+    width: 192px;
+    height: 64px;
+}
+
+.menu {
+    display: flex;
+}

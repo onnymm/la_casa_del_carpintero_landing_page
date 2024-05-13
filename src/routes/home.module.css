@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main h2 {
+    width: 700px;
+    margin-bottom: 2rem;
+}
