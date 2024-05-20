@@ -72,7 +72,6 @@ const ImageParallaxTemplate = ({src, className}) => {
 
                 // Cambio dinámico de posición de la imagen
                 setTop(-(selfYPosition*verticalVelocity)+(scroll*verticalVelocity));
-                console.log(verticalVelocity)
             })
 
             return (
@@ -80,8 +79,6 @@ const ImageParallaxTemplate = ({src, className}) => {
             );
         }, [selfId, selfYPosition, vh, selfHeight, verticalVelocity]
     )
-
-    console.log(verticalVelocity)
 
     return (
         // Contenedor de la imagen

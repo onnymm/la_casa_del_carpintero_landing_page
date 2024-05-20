@@ -1,0 +1,9 @@
+.container {
+    box-sizing: border-box;
+    max-width: 1400px;
+    min-height: 100vh;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    background-color: hsl( var( --color-white), 1);
+    box-shadow: 0 0 12px hsl( var( --color-black), 0.3);
+}

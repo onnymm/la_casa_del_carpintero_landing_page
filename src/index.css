@@ -34,6 +34,7 @@ button {
     --color-light-gray: 0, 0%, 90%;
     --color-dark-gray: 0, 0%, 50%;
     --color-transparent: 0, 0%, 0%;
+    --color-background: 0, 0%, 97%;
 
     /* FONT SIZES */
     --ff-large: 4rem;
@@ -46,7 +47,7 @@ button {
 }
 
 body {
-    /* background-image: url("banner.jpg"); */
+    background-color: hsl( var(--color-background), 1) ;
 }
 
 body * {
@@ -67,6 +68,11 @@ h2 {
 
 h3 {
     font-size: 1.25em;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
 }
 
 /* modular-styles */
