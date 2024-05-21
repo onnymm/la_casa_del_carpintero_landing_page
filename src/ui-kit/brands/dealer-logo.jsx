@@ -8,14 +8,14 @@ const DealerLogo = ({src, alt}) => {
     const maxWidth = (aspectRatio) => {
         setAtts({
             aspectRatio: `${aspectRatio}`,
-            width: "80px",
+            width: "5em",
         })
     }
 
     const maxHeight = (aspectRatio) => {
         setAtts({
             aspectRatio: `${aspectRatio}`,
-            height: "48px",
+            height: "2.5em",
         })
     }
 

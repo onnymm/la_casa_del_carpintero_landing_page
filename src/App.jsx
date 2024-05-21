@@ -1,5 +1,5 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar";
-import Home from "./routes/home";
 import PageContainer from "./ui-kit/page-container";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
       <PageContainer class="page-container">
       <Navbar />
-        <Home />
+        <Outlet />
       </PageContainer>
   )
 }

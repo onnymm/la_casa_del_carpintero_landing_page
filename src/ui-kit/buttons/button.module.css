@@ -1,14 +1,22 @@
 .button {
     background-color: hsl( var(--color-light-red), 1);
     border: none;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
+    padding: 1em 2em;
+    border-radius: 2em;
     color: hsl( var(--color-white), 1);
-    transition: 0.3s
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.button div {
+    transition: transform 0.3s;
 }
 
 .button:hover {
     background-color: hsl( var(--color-light-red-focused), 1);
+}
+
+.button:hover div {
+    transform: scale(95%);
 }
 
 .button:active {

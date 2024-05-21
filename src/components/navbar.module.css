@@ -5,14 +5,20 @@
     left: 0;
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 2em;
     width: 100vw;
 }
 
 .logo {
-    margin: 0.5rem;
-    width: 192px;
-    height: 64px;
+    cursor: pointer;
+    margin: 0.5em;
+    aspect-ratio: 192/64;
+    height: 4em;
+    transition: transform 0.2s;
+}
+
+.logo:hover {
+    transform: scale(96%);
 }
 
 .menu {

@@ -4,7 +4,7 @@ const Button = ({text}) => {
     
     return (
         <button className={style.button}>
-            {text}
+            <div>{text}</div>
         </button>
     )
 }

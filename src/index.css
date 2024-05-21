@@ -25,6 +25,11 @@ button {
     cursor: pointer;
 }
 
+img {
+    -webkit-user-drag: none;
+}
+
+/* VARIABLES */
 :root {
     /* COLORS */
     --color-light-red: 353, 100%, 50%;
@@ -37,8 +42,14 @@ button {
     --color-background: 0, 0%, 97%;
 
     /* FONT SIZES */
-    --ff-large: 4rem;
-    --ff-medium: 2rem;
+    --ff-large: 4em;
+    --ff-medium-large: 2em;
+    --ff-medium: 1.25em;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
 }
 
 ::selection {
@@ -53,36 +64,37 @@ body {
 body * {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    font-size: 16px;
+    font-size: clamp(0.5vw, 1.33vw, 16px);
 }
 
 h1 {
-    font-size: var(--ff-large)
+    padding: 0 2em;
+    font-size: var(--ff-large);
 }
 
 h2 {
-    font-size: var(--ff-medium);
-    font-weight: 400;
+    padding: 0 6em;
+    font-size: var(--ff-medium-large);
     color: hsl( var(--color-dark-gray), 1);
+    font-weight: 400;
 }
 
 h3 {
-    font-size: 1.25em;
+    font-size: var(--ff-medium-large);
+    font-weight: 400;
+    color:hsl( var(--color-light-red), 1)
 }
 
-#root {
+main {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 5em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 /* modular-styles */
 .glass-container {
     background-color: hsl( var(--color-white), 0.75);
     backdrop-filter: blur(6px);
-}
-
-main {
-    margin-top: 5rem;
-    display: flex;
-    flex-direction: column;
 }
