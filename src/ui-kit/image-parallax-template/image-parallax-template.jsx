@@ -4,11 +4,11 @@ import style from './image-parallax-template.module.css';
 
 const ImageParallaxTemplate = ({src, className}) => {
     // Estado para el valor de posición de la imagen
-    const [top, setTop] = useState(0);
+    const [imgTop, setImgTop] = useState(0);
     // Estado para la posición Y del componente en el documento
-    const [selfYPosition, setSelfYPosition] = useState();
+    const [divYPosition, setDivYPosition] = useState();
     // Altura del componente
-    const [selfHeight, setSelfHeight] = useState();
+    const [imgHeight, setSelfHeight] = useState();
     // Velocidad de desplazamiento de la imagen
     const [verticalVelocity, setVerticalVelocity] = useState();
     // ID para el componente
@@ -28,7 +28,7 @@ const ImageParallaxTemplate = ({src, className}) => {
         () => {
             if (!selfId) return;
             // Posición Y
-            setSelfYPosition(document.getElementById(selfId).offsetTop);
+            setDivYPosition(document.getElementById(selfId).offsetTop);
             // Altura del elemento
             setSelfHeight(document.getElementById(selfId).offsetHeight);
         }, [selfId]
@@ -37,47 +37,59 @@ const ImageParallaxTemplate = ({src, className}) => {
     // Efecto para obtener el cálculo de velocidad tras la renderización
     useEffect(
         () => {
-            if (!selfId || !selfHeight) return;
+            if (!selfId || !imgHeight) return;
             // Inicialización del valor de velocidad
             let value = 0.5;
+
+            // Altura remanente de la imagen
+            const remHeight = imgHeight/3
+
+            // Altura del contenedor div
+            const divHeight = remHeight*2
+
+            // Altura no utilizada por el contenedor div
+            const remVH = vh - divHeight 
             
             // Comparación de la altura de la imagen con la altura de la ventana del navegador
-            if (selfHeight <= vh){
+            if (imgHeight <= vh){
                 // Si la altura de la imagen no es mayor a la altura de la ventana del navegador
-                value = (selfHeight/3)/(vh-selfHeight/3*2);
+                value = remHeight / remVH;
             }
 
             // Se establece la velocidad vertical en el valor calculado
             setVerticalVelocity(value);
-        }, [selfId, selfHeight, vh]
+        }, [selfId, imgHeight, vh]
     )
 
     // Efecto para calcular la posición inicial de la imagen dentro del contenedor
     useEffect(
         () => {
-            if (!selfYPosition || !verticalVelocity) return;
+            if (!divYPosition || !verticalVelocity) return;
 
-            setTop(-(selfYPosition*verticalVelocity))
-        }, [selfYPosition, verticalVelocity]
+            setImgTop(-(divYPosition*verticalVelocity))
+        }, [divYPosition, verticalVelocity]
     )
 
     // Efecto para establecer la posición inicial del paralaje de la imagen
     useEffect(
         () => {
-            if (!selfId || !selfYPosition || !selfHeight || !verticalVelocity) return;
+            if (!selfId || !divYPosition || !imgHeight || !verticalVelocity) return;
             // Escuchador del evento de deslizamiento
             window.addEventListener('scroll', function(){
                 // Posición actual del desplazamiento vertical (Comienza en 0)
                 const scroll = this.window.scrollY;
 
+                // Valor top negativo (Mayor mientras más abajo se encuentre el div en el documento)
+                const offsetTop = -(divYPosition*verticalVelocity)
+
                 // Cambio dinámico de posición de la imagen
-                setTop(-(selfYPosition*verticalVelocity)+(scroll*verticalVelocity));
+                setImgTop(offsetTop + (scroll*verticalVelocity));
             })
 
             return (
                 () => {window.removeEventListener("scroll", function(){})}
             );
-        }, [selfId, selfYPosition, vh, selfHeight, verticalVelocity]
+        }, [selfId, divYPosition, vh, imgHeight, verticalVelocity]
     )
 
     return (
@@ -100,7 +112,7 @@ const ImageParallaxTemplate = ({src, className}) => {
                 //      al cálculo de las funciones contenidas en este componente
                 style={
                     {
-                        top: `${top}px`,
+                        top: `${imgTop}px`,
                     }
                 }
             />
