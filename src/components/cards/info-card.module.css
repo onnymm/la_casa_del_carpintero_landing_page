@@ -2,8 +2,9 @@
     aspect-ratio: calc(100%-4em)/(calc(100%-4em))2;
     width: calc(100%-4em);
     display: flex;
-    box-shadow: 0 0 12px hsl( var(--color-dark-gray), 0.5);
+    box-shadow: var(--shadow);
     overflow: hidden;
+    background-color: hsl( var(--color-box-item), 1);
 }
 
 .infoCard {
@@ -33,4 +34,18 @@
     /* font-size: clamp(1vw, var(--ff-medium), 1.5vw); */
     color: hsl( var(--color-dark-gray), 1);
     font-weight: 300;
+}
+
+@media only screen and (max-width: 400px) {
+    .container {
+        width: calc(100%-2em);
+    }
+
+    .infoCard {
+        width: 100%;
+    }
+
+    .description {
+        width: 100%;
+    }
 }

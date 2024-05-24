@@ -7,4 +7,5 @@
 
 .logo {
     width: 40em;
+    max-width: calc(100vw - 4em);
 }

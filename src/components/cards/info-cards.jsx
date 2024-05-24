@@ -1,4 +1,4 @@
-import { cardsInfo } from "../data/home"
+import { cardsInfo } from "../../data/home"
 import InfoCard from "./info-card"
 import style from "./info-cards.module.css"
 
@@ -11,11 +11,12 @@ const InfoCards = () => {
                     (card, index) => (
                         <InfoCard
                             key={index}
-                            src={card.src}
-                            title={card.title}
-                            description={card.description}
-                            button={card.button}
                             className={style.card}
+                            // src={card.src}
+                            // title={card.title}
+                            // description={card.description}
+                            // button={card.button}
+                            {...card}
                         />
                     )
                 )

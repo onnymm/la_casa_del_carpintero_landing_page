@@ -6,7 +6,7 @@ const LogoMain = () => {
         <section className={style.container}>
             <img
                 className={style.logo}
-                src="logo.png"
+                src="logo-color.png"
                 alt="Logo de La Casa Del Carpintero"
             />
         </section>

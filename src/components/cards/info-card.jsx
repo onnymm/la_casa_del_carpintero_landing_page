@@ -1,8 +1,8 @@
-import Button from "../ui-kit/buttons/button";
-import ImageParallaxTemplate from "../ui-kit/image-parallax-template/image-parallax-template";
+import LinkButton from "../../ui-kit/buttons/link-button";
+import ImageParallaxTemplate from "../../ui-kit/image-parallax-template/image-parallax-template";
 import style from './info-card.module.css';
 
-const InfoCard = ({src, title, description, button, className}) => {
+const InfoCard = ({src, title, description, button, className, link}) => {
 
     return (
         <div className={`${style.container} ${className}`}>
@@ -14,7 +14,7 @@ const InfoCard = ({src, title, description, button, className}) => {
                         {description}
                     </p>
                 </div>
-                <Button text={button} />
+                <LinkButton text={button} link={link} />
             </div>
         </div>
     )

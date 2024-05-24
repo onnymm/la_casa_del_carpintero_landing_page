@@ -11,9 +11,11 @@ h6,
 section,
 div,
 p,
-button {
+button,
+iframe {
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
 img,
@@ -29,24 +31,50 @@ img {
     -webkit-user-drag: none;
 }
 
+a {
+    text-decoration: none;
+}
+
+svg {
+    width: 2.5em;
+    height: 2.5em;
+}
+
 /* VARIABLES */
 :root {
-    /* COLORS */
+    font-size: clamp(0.5vw, 1.33vw, 16px);
+    /* COLORES (HSL sin valor de opacidad) */
     --color-light-red: 353, 100%, 50%;
     --color-light-red-focused: 353, 100%, 56.5%;
+    
     --color-white: 0, 0%, 100%;
     --color-black: 0, 0%, 0%;
+    
     --color-light-gray: 0, 0%, 90%;
     --color-dark-gray: 0, 0%, 50%;
-    --color-transparent: 0, 0%, 0%;
-    --color-background: 0, 0%, 97%;
 
-    /* FONT SIZES */
+    --color-transparent: 0, 0%, 0%;
+    
+    /* COLORES DE MODO */
+    --color-box-item: 0, 0%, 100%;
+    --color-dark-mode: 0, 0%, 12%;
+    --color-bg: var( --color-white);
+    --color-text: var(--color-black);
+
+    /* TAMAÑOS DE FUENTE */
     --ff-large: 4em;
     --ff-medium-large: 2em;
     --ff-medium: 1.25em;
+
+    /* VALOR BOX SHADOW */
+    --shadow: 0 0 0.75em hsl( var( --color-black), 0.25);
+
+    /* COLOR DE NAVBAR */
+    --nav-bg: hsl( var(--color-white), 0.75);
+    --bar-btn: hsl( var(--color-light-red), 0.75)
 }
 
+/* ATRIBUTOS PREESTABLECIDOS */
 #root {
     display: flex;
     justify-content: center;
@@ -58,22 +86,43 @@ img {
 }
 
 body {
-    background-color: hsl( var(--color-background), 1) ;
+    background-color: hsl( 0, 0%, 90%, 1) ;
+    transition: background-color 0.5s, color 0.5s, fill 0.5s;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    background-color: hsl( 0, 0%, 8%, 1);
+
+    --color-bg: var( --color-dark-mode);
+    --color-text: var( --color-white);
+    --color-box-item: 0, 0%, 16%;
+    --color-light-red: 353, 100%, 58%;
+    --color-light-red-focused: 353, 100%, 65%;
+    --color-dark-gray: 0, 0%, 75%;
+
+    --nav-bg: hsl( var(--color-dark-mode), 0.85);
+    --bar-btn: hsl( 353, 100%, 58%, 0.9)
+}
+
+body.body-overflow-y {
+    overflow-y: hidden;
 }
 
 body * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(0.5vw, 1.33vw, 16px);
+    transition: background-color 0.5s, color 0.5s;
+    color: hsl( var( --color-text), 1);
+    fill: hsl( var( --color-text), 1);
 }
 
 h1 {
-    padding: 0 2em;
     font-size: var(--ff-large);
 }
 
 h2 {
-    padding: 0 6em;
     font-size: var(--ff-medium-large);
     color: hsl( var(--color-dark-gray), 1);
     font-weight: 400;
@@ -93,8 +142,119 @@ main {
     flex-direction: column;
 }
 
-/* modular-styles */
-.glass-container {
-    background-color: hsl( var(--color-white), 0.75);
-    backdrop-filter: blur(6px);
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section > h1 {
+    text-align: center;
+}
+
+iframe {
+    box-shadow: var(--shadow);
+}
+
+.nav-logo-color {
+    z-index: 1;
+}
+
+.nav-logo-white {
+    z-index: 0;
+    opacity: 0;
+}
+
+.dark-mode .nav-logo-color {
+    z-index: 0;
+    opacity: 0;
+}
+
+.dark-mode .nav-logo-white {
+    z-index: 1;
+    opacity: 1;
+}
+
+.url {
+    color: hsl( var( --color-light-red));
+    text-decoration: underline;
+    gap: 0.5em;
+}
+
+/* .icon {
+    width: 1em;
+    height: 1em;
+    margin: -0.125em 0.25em;
+    fill: hsl( var( --color-light-red));
+} */
+
+/* VISTA MÓVIL */
+@media only screen and (max-width: 400px) {
+    :root {
+        font-size: 16px;
+        --ff-large: 2.625rem;
+        --ff-medium-large: 1.125em;
+        --ff-medium: 1em;
+    }
+
+    section > h1 {
+        padding: 0 1em;
+    }
+
+    section > h2 {
+        padding: 0 3em;
+    }
+
+    .bar-button {
+        transition: background-color 0.5s;
+    }
+
+    .bar-button * {
+        transition: color 0.3s, transform 0.5s, fill 0.15s;
+    }
+
+    .bar-button:active {
+        background-color: var( --bar-btn);
+        transition: 0s;
+    }
+
+    .bar-button:active * {
+        color: hsl( var(--color-white), 1);
+        fill: hsl( var(--color-white), 1);
+        transform: scale(96%);
+        transition: 0s;
+    }
+}
+
+/* VISTA DE ESCRITORIO */
+@media only screen and (min-width: 401px) {
+    button svg {
+        fill: hsl( var(--color-white), 1);
+    }
+
+    section > h1 {
+        padding: 0 2em;
+    }
+
+    section > h2 {
+        padding: 0 6em;
+    }
+
+    .bar-button {
+        transition: background-color 0.5s;
+    }
+
+    .bar-button * {
+        transition: color 0.3s, transform 0.5s, fill 0.15s;
+    }
+
+    .bar-button:hover {
+        background-color: var( --bar-btn);
+    }
+
+    .bar-button:hover * {
+        color: hsl( var(--color-white), 1);
+        fill: hsl( var(--color-white), 1);
+        transform: scale(96%);
+    }
 }
